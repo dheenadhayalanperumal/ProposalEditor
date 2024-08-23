@@ -36,3 +36,93 @@
     transform: rotate(360deg);
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+/* General styles for screen and PDF */
+* {
+  font-family: "Inter", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa; 
+}
+
+.pdf-container {
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: space-between;
+  padding: 48px 27px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for screen */
+  max-width: 100%; /* Full width for responsiveness */
+  margin: 0 auto; /* Center align for screen */
+  /* background-image: url("./asset/logo.png");  */
+  width: 595px;
+  height: 842px;
+  /* display: grid; */
+  background-color: #3a5065;
+}
+
+.logo_section p {
+  color: #ffffff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.content-section {
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  color: #fff;
+}
+.proposal-title {
+  border-bottom: 1px solid #ffffffa1;
+  line-height: 60px;
+}
+.proposal-title h1 {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: left;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 50px;
+}
+.proposal-title span {
+  color: #f58020;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 50px;
+}
+.created,
+.contact,
+.project {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px !important;
+}
+.created span,
+.contact span,
+.project span {
+  font-size: 14px;
+  color: #ffffff9e;
+  font-weight: 400;
+}
+.created p,
+.contact p,
+.project p {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+.bottom-aligned-div {
+  align-content: flex-end;
+}
