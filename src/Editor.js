@@ -8,7 +8,29 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+// import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
+import { TreeView } from '@mui/x-tree-view';
 import { NavLink } from "react-router-dom";
+
+
+const CustomLabel = () => (
+  <AppBar position="static">
+    <Toolbar>
+      <Typography variant="h6">Project Details</Typography>
+    </Toolbar>
+  </AppBar>
+);
+
+const CustomLabel1 = () => (
+  <AppBar position="static" style={{ marginTop: "20px" }}>
+  <Toolbar>
+    <Typography variant="h6">Project Content</Typography>
+  </Toolbar>
+</AppBar>
+);
+
+
 
 const Editor = () => {
   const dispatch = useDispatch();
@@ -51,16 +73,20 @@ const Editor = () => {
       reader.readAsDataURL(file);
     }
   };
-  console.log(JSON.stringify(sections));
+
+  
+  // console.log(JSON.stringify(sections));
 
   return (
     <Container>
-      <AppBar position="static">
+
+  {/* <AppBar position="static">
         <Toolbar>
           <Typography variant="h6">Project Details</Typography>
         </Toolbar>
-      </AppBar>
-
+      </AppBar> */}
+      <TreeView>
+    <TreeItem nodeId="1" label={<CustomLabel />} defaultCollapseIcon="+" defaultExpandIcon="-">
       <div>
         {[
           { label: "Company Name", value: header.company, key: "company" },
@@ -122,12 +148,77 @@ const Editor = () => {
           />
         )}
       </div>
+    </TreeItem>
+  </TreeView>
+ 
+     
+      {/* <div>
+        {[
+          { label: "Company Name", value: header.company, key: "company" },
+          { label: "Project Name", value: header.prjName, key: "prjName" },
+          { label: "Client Name", value: header.client, key: "client" },
+          { label: "Creater", value: header.creater, key: "creater" },
+          { label: "Mobile Number", value: header.mobile, key: "mobile" },
+          { label: "Email", value: header.email, key: "email" },
+          { label: "Website", value: header.website, key: "website" },
+          { label: "Bank Name", value: header.bank, key: "bank" },
+          { label: "Account Holder Name", value: header.accName, key: "accName" },
+          { label: "Account Number", value: header.accNum, key: "accNum" },
+          { label: "IFSC code", value: header.Ifsc, key: "Ifsc" },
+          { label: "Branch Name", value: header.branch, key: "branch" },
+        ].map((item, index) => (
+          <TextField
+            key={index}
+            label={item.label}
+            variant="outlined"
+            fullWidth
+            value={item.value}
+            onChange={(e) => handleHeaderChange(item.key, e.target.value)}
+            margin="normal"
+          />
+        ))}
+        <label htmlFor="logo-upload" style={{ display: "block", margin: "20px 0" }}>
+          Logo
+        </label>
+        <div style={{ position: "relative", marginBottom: "20px" }}>
+          <input
+            id="logo-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleLogoUpload}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              opacity: 0,
+              cursor: "pointer",
+            }}
+          />
+          <TextField
+            variant="outlined"
+            fullWidth
+            value={header.logo ? "Logo uploaded" : ""}
+            placeholder="Upload Logo"
+            margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+        </div>
+        {header.logo && (
+          <img
+            src={header.logo}
+            alt="Logo"
+            style={{ maxWidth: "100%", height: "auto", marginBottom: "20px" }}
+          />
+        )}
+      </div> */}
+      
 
-      <AppBar position="static" style={{ marginTop: "20px" }}>
-        <Toolbar>
-          <Typography variant="h6">Project Content</Typography>
-        </Toolbar>
-      </AppBar>
+    
+      <TreeView>
+      <TreeItem nodeId="1" label={<CustomLabel1 />} defaultCollapseIcon="+" defaultExpandIcon="-">
+        <div>
 
       {sections.length === 0 && (
         <div>
@@ -192,6 +283,9 @@ const Editor = () => {
           </Button>
         </div>
       )}
+      </div>
+      </TreeItem>
+      </TreeView>
 
       <Button variant="contained" color="primary" style={{ marginTop: "20px" }}>
         <NavLink to="/document" style={{ textDecoration: "none", color: "white" }}>

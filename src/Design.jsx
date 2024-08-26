@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
     alignItems: "left",
     gap: 10,
   },
+  sectioncontent: {
+    flexDirection: "column",
+    justifyContent: "left",
+    alignItems: "left",
+    marginbottom:48
+   
+  },
   image: {
     width: 258,
     height: 39,
@@ -48,7 +55,7 @@ const styles = StyleSheet.create({
     fontSize: 58,
     fontWeight: 900,
     color: "white",
-    textAlign: "Right",
+   
   },
   prjtlt: {
     fontSize: 32,
@@ -81,6 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#F58020",
     fontWeight: "bold",
+    marginTop:25,
   },
   line: {
     borderBottomWidth: 1,
@@ -120,21 +128,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "left",
     alignItems: "left",
-    gap: 10,
+    
   },
 });
-// const section=[
-//   {
-//     sectionhead: "ert",
-//     data: [
-//       { title: "ret", content: "ert" },
-//       { title: "ert", content: "ert" },
-//     ],
-//   },
-//   {
-//     sectionhead: "ert",
-//     data: [{ title: "ret", content: "rt" }],
-//   },
 
 // ];
 
@@ -143,9 +139,11 @@ const Design = ({ data ,data1 = [] }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
-        <View>
+        {data.logo ? (<View>
           <Image style={styles.image} src={data.logo} />
-        </View>
+        </View> ) : null
+          }
+        
         <View>
           <Text style={styles.company}>{data.company}</Text>
         </View>
@@ -179,7 +177,7 @@ const Design = ({ data ,data1 = [] }) => (
     {data1.length > 0 ? (
       data1.map((item, index) => (
         <Page key={index} size="A4" style={styles.page}>
-          <View style={styles.section}>
+          <View style={styles.sectioncontent}>
             <Text style={styles.head1}>{item.name}</Text>
             <View style={styles.line} />
             {item.content.map((data, index) => (
@@ -223,9 +221,13 @@ const Design = ({ data ,data1 = [] }) => (
           <Text style={styles.data1}>{data.branch}</Text>
         </View>
       </View>
-      <View style={styles.imgsection}>
+      {data.logo ? (<View style={styles.imgsection}>
+          <Image style={styles.image} src={data.logo} />
+        </View> ) : null
+          }
+      {/* <View style={styles.imgsection}>
         <Image style={styles.image} src={data.logo} />
-      </View>
+      </View> */}
       <View style={styles.section}>
         <View style={styles.section}>
           <Text style={styles.head}>THANK YOU</Text>
