@@ -4,6 +4,7 @@
 import React from 'react';
 import {  useSelector } from 'react-redux';
 import Design from './Design.jsx';
+import Design1 from './Design1.jsx';
 import { PDFDownloadLink, PDFViewer, Document } from '@react-pdf/renderer';
 import './style.css';
 // import Head from './Head.jsx';
@@ -29,8 +30,10 @@ const MyDocument = () => {
     {/* <Head/> */}
   <PDFDownloadLink
     document={
-      
+      <Document>
         <Design data={header} />
+        <Design1 data={header} />
+      </Document
        
      
     }
