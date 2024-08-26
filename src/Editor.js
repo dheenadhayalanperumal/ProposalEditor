@@ -73,6 +73,11 @@ const Editor = () => {
       reader.readAsDataURL(file);
     }
   };
+  const handleKeyDown = (event) => {
+    if (event.key === ' ') {
+      event.stopPropagation();
+    }
+  };
 
   
   // console.log(JSON.stringify(sections));
@@ -80,11 +85,7 @@ const Editor = () => {
   return (
     <Container>
 
-  {/* <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6">Project Details</Typography>
-        </Toolbar>
-      </AppBar> */}
+ 
       <TreeView>
     <TreeItem nodeId="1" label={<CustomLabel />} defaultCollapseIcon="+" defaultExpandIcon="-">
       <div>
@@ -109,26 +110,23 @@ const Editor = () => {
             fullWidth
             value={item.value}
             onChange={(e) => handleHeaderChange(item.key, e.target.value)}
+            onKeyDown={handleKeyDown}
             margin="normal"
           />
         ))}
         <label htmlFor="logo-upload" style={{ display: "block", margin: "20px 0" }}>
           Logo
         </label>
-        <div style={{ position: "relative", marginBottom: "20px" }}>
-          <input
+        <Button htmlFor="logo-upload" variant="contained" color="primary" component="label" style={{ marginBottom: "20px" }}> Upload Logo 
+        <input
             id="logo-upload"
             type="file"
             accept="image/*"
             onChange={handleLogoUpload}
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              opacity: 0,
-              cursor: "pointer",
-            }}
+            hidden
           />
+        </Button>
+        <div style={{ position: "relative", marginBottom: "20px" }}>
           <TextField
             variant="outlined"
             fullWidth
@@ -138,7 +136,18 @@ const Editor = () => {
             InputProps={{
               readOnly: true,
             }}
+            onKeyDown={handleKeyDown}
           />
+          {/* <TextField
+            variant="outlined"
+            fullWidth
+            value={header.logo ? "Logo uploaded" : ""}
+            placeholder="Upload Logo"
+            margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
+          /> */}
         </div>
         {header.logo && (
           <img
@@ -152,67 +161,7 @@ const Editor = () => {
   </TreeView>
  
      
-      {/* <div>
-        {[
-          { label: "Company Name", value: header.company, key: "company" },
-          { label: "Project Name", value: header.prjName, key: "prjName" },
-          { label: "Client Name", value: header.client, key: "client" },
-          { label: "Creater", value: header.creater, key: "creater" },
-          { label: "Mobile Number", value: header.mobile, key: "mobile" },
-          { label: "Email", value: header.email, key: "email" },
-          { label: "Website", value: header.website, key: "website" },
-          { label: "Bank Name", value: header.bank, key: "bank" },
-          { label: "Account Holder Name", value: header.accName, key: "accName" },
-          { label: "Account Number", value: header.accNum, key: "accNum" },
-          { label: "IFSC code", value: header.Ifsc, key: "Ifsc" },
-          { label: "Branch Name", value: header.branch, key: "branch" },
-        ].map((item, index) => (
-          <TextField
-            key={index}
-            label={item.label}
-            variant="outlined"
-            fullWidth
-            value={item.value}
-            onChange={(e) => handleHeaderChange(item.key, e.target.value)}
-            margin="normal"
-          />
-        ))}
-        <label htmlFor="logo-upload" style={{ display: "block", margin: "20px 0" }}>
-          Logo
-        </label>
-        <div style={{ position: "relative", marginBottom: "20px" }}>
-          <input
-            id="logo-upload"
-            type="file"
-            accept="image/*"
-            onChange={handleLogoUpload}
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              opacity: 0,
-              cursor: "pointer",
-            }}
-          />
-          <TextField
-            variant="outlined"
-            fullWidth
-            value={header.logo ? "Logo uploaded" : ""}
-            placeholder="Upload Logo"
-            margin="normal"
-            InputProps={{
-              readOnly: true,
-            }}
-          />
-        </div>
-        {header.logo && (
-          <img
-            src={header.logo}
-            alt="Logo"
-            style={{ maxWidth: "100%", height: "auto", marginBottom: "20px" }}
-          />
-        )}
-      </div> */}
+ 
       
 
     
@@ -228,6 +177,7 @@ const Editor = () => {
             fullWidth
             value={newSection}
             onChange={(e) => setNewSection(e.target.value)}
+            onKeyDown={handleKeyDown}
             margin="normal"
           />
           <Button variant="contained" color="primary" onClick={handleAddSection}>
@@ -251,6 +201,7 @@ const Editor = () => {
             fullWidth
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            onKeyDown={handleKeyDown}
             margin="normal"
           />
           <TextField
@@ -261,6 +212,7 @@ const Editor = () => {
             fullWidth
             value={newContent}
             onChange={(e) => setNewContent(e.target.value)}
+            onKeyDown={handleKeyDown}
             margin="normal"
           />
           <Button variant="contained" color="primary" onClick={() => handleAddContent(sectionIndex)}>
@@ -276,6 +228,7 @@ const Editor = () => {
             fullWidth
             value={newSection}
             onChange={(e) => setNewSection(e.target.value)}
+            onKeyDown={handleKeyDown}
             margin="normal"
           />
           <Button variant="contained" color="primary" onClick={handleAddSection}>
