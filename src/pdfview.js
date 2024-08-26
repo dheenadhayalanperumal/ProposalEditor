@@ -33,7 +33,7 @@ const MyDocument = () => {
       <Document>
         <Design data={header} />
         <Design1 data={header} />
-      </Document
+      </Document>
        
      
     }
