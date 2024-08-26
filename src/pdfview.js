@@ -32,7 +32,7 @@ const MyDocument = () => {
     document={
       <Document>
         <Design data={header} />
-        <Design1 data={header} />
+        {/* <Design1 data={header} /> */}
       </Document>
        
      
