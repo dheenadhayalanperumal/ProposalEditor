@@ -51,6 +51,7 @@ const Editor = () => {
       reader.readAsDataURL(file);
     }
   };
+  console.log(JSON.stringify(sections));
 
   return (
     <Container>

@@ -1,124 +1,254 @@
 import React from "react";
-import { Page, Text, View, Document, StyleSheet, Image,Font } from "@react-pdf/renderer";
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Image,
+} from "@react-pdf/renderer";
+
 
 const styles = StyleSheet.create({
   page: {
-   display: "flex",
+    display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: "#072E4B",
     color: "black",
     width: "100vw",
-    paddingVertical:48,
+    paddingVertical: 48,
     paddingHorizontal: 27,
-   
   },
 
   section: {
-    
     flexDirection: "column",
     justifyContent: "left",
     alignItems: "left",
-   gap: 10,
-
+    gap: 10,
   },
   image: {
-    
     width: 258,
     height: 39,
     reszieMode: "contain",
     // margin: "0 auto", // Center the image
   },
-    company: {
-        fontSize: 16,
-        fontWeight: "bold",
-        color: "white",
-    },
-    head: {
-        fontSize: 42,
-        fontWeight: "bold",
-        color: "white",
-    },
-    prjtlt: {
-        fontSize: 32,
-        fontWeight: "bold",
-        color: "#F58020",
-    },
-    section1: { 
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "left",
-        gap: 10,
-       
-
-        
-    },
-    subsection: {
-        flexDirection: "column",
-        justifyContent: "left",
-        alignItems: "left",
-        gap: 10,
-    },
-    data: {
-        fontSize: 10,
-        color: "white",
-    },
-    subhead
-    : {
-        fontSize: 14,
-        color: "white",
-        fontWeight: "bold",
-    },
-    line: {
-        borderBottomWidth: 1,
-        borderBottomColor: "white",
-        marginVertical: 10,
-        marginVertical: 10,
-      },
+ 
+  company: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "white",
+  },
+  head: {
+    fontSize: 42,
+    fontWeight: 900,
+    color: "white",
+  },
+  head1: {
+    fontSize: 58,
+    fontWeight: 900,
+    color: "white",
+    textAlign: "Right",
+  },
+  prjtlt: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#F58020",
+  },
+  section1: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "left",
+    gap: 10,
+    color: "white",
+  },
+  subsection: {
+    flexDirection: "column",
+    justifyContent: "left",
+    alignItems: "left",
+    gap: 10,
+  },
+  data: {
+    fontSize: 10,
+    color: "gray",
+  },
+  subhead: {
+    fontSize: 14,
+    color: "white",
+    fontWeight: "bold",
+  },
+  subhead1: {
+    fontSize: 24,
+    color: "#F58020",
+    fontWeight: "bold",
+  },
+  line: {
+    borderBottomWidth: 1,
+    borderBottomColor: "white",
+    marginVertical: 10,
+  
+  },
+  page2: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 10,
+  },
+  bankhead: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
+  },
+  Pagesection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  data1: {
+    fontSize: 14,
+    color: "gray",
+  },
+  imgsection: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image1: {
+    width: 258,
+    height: 39,
+    reszieMode: "contain",
+    // margin: "0 auto", // Center the image
+  },
+  section2: {
+    flexDirection: "column",
+    justifyContent: "left",
+    alignItems: "left",
+    gap: 10,
+  },
 });
+// const section=[
+//   {
+//     sectionhead: "ert",
+//     data: [
+//       { title: "ret", content: "ert" },
+//       { title: "ert", content: "ert" },
+//     ],
+//   },
+//   {
+//     sectionhead: "ert",
+//     data: [{ title: "ret", content: "rt" }],
+//   },
 
-const Design = ({ data }) => (
+// ];
+
+
+const Design = ({ data ,data1 = [] }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-    
-
       <View style={styles.section}>
-      <View>
-          {/* <Image style={styles.image} src='data:image/png;base64,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' /> */}
+        <View>
           <Image style={styles.image} src={data.logo} />
         </View>
-        <View >
-        <Text style={styles.company}>{data.company}</Text>
+        <View>
+          <Text style={styles.company}>{data.company}</Text>
         </View>
-        
       </View>
       <View style={styles.section}>
         <View style={styles.section}>
-        <Text style={styles.head}>PROPOSAL FOR</Text>
-        <Text style={styles.head}>{data.client}</Text>
-        <Text style={styles.prjtlt}>{data.prjName}</Text>
+          <Text style={styles.head}>PROPOSAL FOR</Text>
+          <Text style={styles.head}>{data.client}</Text>
+          <Text style={styles.prjtlt}>{data.prjName}</Text>
         </View>
-        <View style={styles.line} /> 
+        <View style={styles.line} />
         <View style={styles.section1}>
-        <View style={styles.subsection}>
-        <Text style={styles.subhead}>CREATED BY</Text>
-        <Text style={styles.data}>{data.creater}</Text>
-        <Text style={styles.data}>{data.mobile}</Text> 
-        </View> 
-        <View style={styles.subsection}>
-        <Text style={styles.subhead}>CONTACT</Text>
-        <Text style={styles.data}>{data.website}</Text>
-        <Text style={styles.data}>{data.email}</Text> 
-        </View> 
-        <View style={styles.subsection}>
-        <Text style={styles.subhead}>PROJECT</Text>
-        <Text style={styles.data}>{data.client}</Text>
-        {/* <Text style={styles.data}>Mobile{data.prjName}</Text>  */}
-        </View> 
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>CREATED BY</Text>
+            <Text style={styles.data}>{data.creater}</Text>
+            <Text style={styles.data}>{data.mobile}</Text>
+          </View>
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>CONTACT</Text>
+            <Text style={styles.data}>{data.website}</Text>
+            <Text style={styles.data}>{data.email}</Text>
+          </View>
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>PROJECT</Text>
+            <Text style={styles.data}>{data.client}</Text>
+          </View>
         </View>
-
       </View>
     </Page>
+   
+    {data1.length > 0 ? (
+      data1.map((item, index) => (
+        <Page key={index} size="A4" style={styles.page}>
+          <View style={styles.section}>
+            <Text style={styles.head1}>{item.name}</Text>
+            <View style={styles.line} />
+            {item.content.map((data, index) => (
+              <View key={index} style={styles.section2}>
+                <Text style={styles.subhead1}>{data.title}</Text>
+                <Text style={styles.data}>{data.content}</Text>
+              </View>
+            ))}
+          </View>
+        </Page>
+      ))
+    ) : (
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text style={styles.head1}>No Data Available</Text>
+        </View>
+      </Page>
+    )}
+
+<Page size="A4" style={styles.page}>
+      <View style={styles.page2}>
+        <Text style={styles.bankhead}>Bank Account Details</Text>
+        <View style={styles.Pagesection}>
+          <Text style={styles.data1}>Bank Name</Text>
+          <Text style={styles.data1}>{data.bank}</Text>
+        </View>
+        <View style={styles.Pagesection}>
+          <Text style={styles.data1}>Account Name</Text>
+          <Text style={styles.data1}>{data.accName}</Text>
+        </View>
+        <View style={styles.Pagesection}>
+          <Text style={styles.data1}>Account Number</Text>
+          <Text style={styles.data1}>{data.accNum}</Text>
+        </View>
+        <View style={styles.Pagesection}>
+          <Text style={styles.data1}>IFSC Code</Text>
+          <Text style={styles.data1}>{data.Ifsc}</Text>
+        </View>
+        <View style={styles.Pagesection}>
+          <Text style={styles.data1}>Branch</Text>
+          <Text style={styles.data1}>{data.branch}</Text>
+        </View>
+      </View>
+      <View style={styles.imgsection}>
+        <Image style={styles.image} src={data.logo} />
+      </View>
+      <View style={styles.section}>
+        <View style={styles.section}>
+          <Text style={styles.head}>THANK YOU</Text>
+        </View>
+        <View style={styles.line} />
+        <View style={styles.section1}>
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>PHONE</Text>
+            <Text style={styles.data}>{data.mobile}</Text>
+          </View>
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>MAIL</Text>
+            <Text style={styles.data}>{data.email}</Text>
+          </View>
+          <View style={styles.subsection}>
+            <Text style={styles.subhead}>WEBSITE</Text>
+            <Text style={styles.data}>{data.website}</Text>
+          </View>
+        </View>
+      </View>
+    </Page>
+      
+    
   </Document>
 );
 
