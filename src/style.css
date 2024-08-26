@@ -9,3 +9,9 @@
     height: 100vh; /* Adjust the height as needed */
     border: none; /* Remove border if any */
   }
+
+  @media (max-width: 768px) {
+    .pdf-viewer {
+      height: 50vh;
+    }
+  }

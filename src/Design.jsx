@@ -8,7 +8,6 @@ import {
   Image,
 } from "@react-pdf/renderer";
 
-
 const styles = StyleSheet.create({
   page: {
     display: "flex",
@@ -31,8 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "left",
     alignItems: "left",
-    marginbottom:48
-   
+    marginbottom: 48,
   },
   image: {
     width: 258,
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
     reszieMode: "contain",
     // margin: "0 auto", // Center the image
   },
- 
+
   company: {
     fontSize: 16,
     fontWeight: "bold",
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
     fontSize: 58,
     fontWeight: 900,
     color: "white",
-   
   },
   prjtlt: {
     fontSize: 32,
@@ -88,13 +85,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#F58020",
     fontWeight: "bold",
-    marginTop:25,
+    marginTop: 25,
   },
   line: {
     borderBottomWidth: 1,
     borderBottomColor: "white",
     marginVertical: 10,
-  
   },
   page2: {
     display: "flex",
@@ -128,22 +124,21 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "left",
     alignItems: "left",
-    
   },
 });
 
 // ];
 
-
-const Design = ({ data ,data1 = [] }) => (
+const Design = ({ data, data1 = [] }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
-        {data.logo ? (<View>
-          <Image style={styles.image} src={data.logo} />
-        </View> ) : null
-          }
-        
+        {data.logo ? (
+          <View>
+            <Image style={styles.image} src={data.logo} />
+          </View>
+        ) : null}
+
         <View>
           <Text style={styles.company}>{data.company}</Text>
         </View>
@@ -173,7 +168,7 @@ const Design = ({ data ,data1 = [] }) => (
         </View>
       </View>
     </Page>
-   
+
     {data1.length > 0 ? (
       data1.map((item, index) => (
         <Page key={index} size="A4" style={styles.page}>
@@ -197,7 +192,7 @@ const Design = ({ data ,data1 = [] }) => (
       </Page>
     )}
 
-<Page size="A4" style={styles.page}>
+    <Page size="A4" style={styles.page}>
       <View style={styles.page2}>
         <Text style={styles.bankhead}>Bank Account Details</Text>
         <View style={styles.Pagesection}>
@@ -221,10 +216,11 @@ const Design = ({ data ,data1 = [] }) => (
           <Text style={styles.data1}>{data.branch}</Text>
         </View>
       </View>
-      {data.logo ? (<View style={styles.imgsection}>
+      {data.logo ? (
+        <View style={styles.imgsection}>
           <Image style={styles.image} src={data.logo} />
-        </View> ) : null
-          }
+        </View>
+      ) : null}
       {/* <View style={styles.imgsection}>
         <Image style={styles.image} src={data.logo} />
       </View> */}
@@ -249,8 +245,6 @@ const Design = ({ data ,data1 = [] }) => (
         </View>
       </View>
     </Page>
-      
-    
   </Document>
 );
 

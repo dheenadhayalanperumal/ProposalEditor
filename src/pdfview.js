@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Design from "./Design.jsx";
-import { PDFDownloadLink, PDFViewer, Document } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import "./style.css";
 // import Head from './Head.jsx';
 
@@ -16,18 +16,14 @@ const MyDocument = () => {
         {/* <Last data={header} /> */}
       </PDFViewer>
 
-      {/* <PDFDownloadLink
-        document={
-          <Document>
-            <Design data={header} />
-          </Document>
-        }
+      <PDFDownloadLink
+        document={<Design data={header} data1={sections} />}
         fileName={`${header.company}_proposal.pdf`}
       >
         {({ loading }) =>
           loading ? "Loading document..." : "Download Proposal PDF"
         }
-      </PDFDownloadLink> */}
+      </PDFDownloadLink>
     </div>
   );
 };

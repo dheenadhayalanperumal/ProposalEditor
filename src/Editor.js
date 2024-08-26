@@ -36,6 +36,7 @@ const Editor = () => {
   const dispatch = useDispatch();
   const header = useSelector((state) => state.header);
   const sections = useSelector((state) => state.sections);
+  const [logo, setLogo] = useState(header.logo);
 
   const [newSection, setNewSection] = useState("");
   const [newTitle, setNewTitle] = useState("");
@@ -63,12 +64,14 @@ const Editor = () => {
     dispatch({ type: "SET_HEADER", payload: { [key]: value } });
   };
 
-  const handleLogoUpload = (e) => {
-    const file = e.target.files[0];
+  const handleLogoUpload = (event) => {
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        handleHeaderChange("logo", reader.result);
+        const base64String = reader.result;
+        setLogo(base64String);
+        handleHeaderChange('logo', base64String);
       };
       reader.readAsDataURL(file);
     }
@@ -80,7 +83,7 @@ const Editor = () => {
   };
 
   
-  // console.log(JSON.stringify(sections));
+ console.log(header.logo);
 
   return (
     <Container>
@@ -114,9 +117,9 @@ const Editor = () => {
             margin="normal"
           />
         ))}
-        <label htmlFor="logo-upload" style={{ display: "block", margin: "20px 0" }}>
+        {/* <label htmlFor="logo-upload" style={{ display: "block", margin: "20px 0" }}>
           Logo
-        </label>
+        </label> */}
         <Button htmlFor="logo-upload" variant="contained" color="primary" component="label" style={{ marginBottom: "20px" }}> Upload Logo 
         <input
             id="logo-upload"
@@ -138,16 +141,7 @@ const Editor = () => {
             }}
             onKeyDown={handleKeyDown}
           />
-          {/* <TextField
-            variant="outlined"
-            fullWidth
-            value={header.logo ? "Logo uploaded" : ""}
-            placeholder="Upload Logo"
-            margin="normal"
-            InputProps={{
-              readOnly: true,
-            }}
-          /> */}
+        
         </div>
         {header.logo && (
           <img
