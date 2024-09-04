@@ -38,6 +38,12 @@ const styles = StyleSheet.create({
     reszieMode: "contain",
     // margin: "0 auto", // Center the image
   },
+  image1: {
+    width: 258,
+    height: 39,
+    reszieMode: "contain",
+    // margin: "0 auto", // Center the image
+  },
 
   company: {
     fontSize: 16,
@@ -114,12 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  image1: {
-    width: 258,
-    height: 39,
-    reszieMode: "contain",
-    // margin: "0 auto", // Center the image
-  },
+  
   section2: {
     flexDirection: "column",
     justifyContent: "left",

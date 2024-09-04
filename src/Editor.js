@@ -129,25 +129,12 @@ const Editor = () => {
             hidden
           />
         </Button>
-        <div style={{ position: "relative", marginBottom: "20px" }}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            value={header.logo ? "Logo uploaded" : ""}
-            placeholder="Upload Logo"
-            margin="normal"
-            InputProps={{
-              readOnly: true,
-            }}
-            onKeyDown={handleKeyDown}
-          />
-        
-        </div>
+       
         {header.logo && (
           <img
             src={header.logo}
             alt="Logo"
-            style={{ maxWidth: "100%", height: "auto", marginBottom: "20px" }}
+            style={{ maxWidth: "100%", height: "100px", marginBottom: "20px" }}
           />
         )}
       </div>
